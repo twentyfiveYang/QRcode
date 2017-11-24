@@ -1,0 +1,27 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class Notice extends JFrame {
+	
+	    JLabel jl;
+	    public Notice() {
+	        jl = new JLabel();  
+	        jl.setHorizontalAlignment(SwingConstants.CENTER);
+	        jl.setText("1、使用左键点击图形按钮，拖动即可画图'\n'还是客户发");
+	        add(jl);
+	        JPanel jp = new JPanel();
+	        add(jp,BorderLayout.SOUTH);
+	        setTitle("使用方法");
+	        setSize(300, 200);
+	        setLocationRelativeTo(null);
+	        setVisible(true);
+	 
+	    }
+	   
+	    }
+

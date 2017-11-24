@@ -1,0 +1,236 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.JPanel;
+
+public class Line extends Shape implements MouseListener{
+	private int a=0;
+	private int x1,y1;
+	private int x2,y2;
+	private Color c = Color.BLACK;
+	private Color originalColor = Color.BLACK;
+	public boolean move = false;
+	public boolean selected = false;
+	static ArrayList<Line> lines = new ArrayList<Line>();
+	static int tag = 1;
+	
+	public Line(int x1,int y1,int x2,int y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	
+		
+	}
+	public int getX1() {
+		return x1;
+	}
+	public int getX2() {
+		return x2;
+	}
+	public int getY1() {
+		return y1;
+	}
+	public int getY2() {
+		return y2;
+	}
+	public void setX1(int x1) {
+		this.x1 = x1;
+		
+	}
+	public void setX2(int x2) {
+		
+		this.x2 = x2;
+		
+	}
+	public void setY1(int y1) {
+		
+		this.y1 = y1;
+		
+	}
+	public void setY2(int y2) {
+		
+		this.y2 = y2;
+	}
+	
+	@Override
+	public void isMove() {
+		move = true;
+			
+	}
+	@Override
+	public void isMoveFalse() {
+		move = false;
+			
+	}
+	@Override
+	public boolean getMove() {
+		return move;
+			
+	}
+	
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		for(Line l:lines) {
+			if(e.getX()>l.getX1()&&e.getX()<l.getX2()&&e.getY()>l.getY1()&&e.getY()<l.getY2()) {
+				System.out.println("Entered line!");;
+			}
+		}
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	public void bigger() {
+		
+		double k;
+		k = ((double)((double)y1-(double)y2))/((double)((double)x1-(double)x2));
+		System.out.println(" k = " + k);
+		if(k>0 && (x2 < x1)) {
+		x1 = x1+10;
+		y1 =y1+(int)(k*10);
+		x2 = x2-10;
+		y2 = y2-(int)(k*10);
+		//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+		}
+		if(k>0 && (x2 > x1)) {
+			x2 = x2+10;
+			y2 =y2+(int)(k*10);
+			x1 = x1-10;
+			y1 = y1-(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+		if(k<0 && x1>x2) {
+			k = -k;
+			x1 = x1+10;
+			y1 =y1-(int)(k*10);
+			x2 = x2-10;
+			y2 = y2+(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+		if(k<0 && x1<x2) {
+			k = -k;
+			x2 = x2+10;
+			y2 =y2-(int)(k*10);
+			x1 = x1-10;
+			y1 = y1+(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+	}
+	public void smaller() {
+		double k;
+		k = ((double)((double)y1-(double)y2))/((double)((double)x1-(double)x2));
+		System.out.println(" k = " + k);
+		if(k>0 && (x2 > x1)) {
+		x1 = x1+10;
+		y1 =y1+(int)(k*10);
+		x2 = x2-10;
+		y2 = y2-(int)(k*10);
+		//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+		}
+		if(k>0 && (x2 < x1)) {
+			x2 = x2+10;
+			y2 =y2+(int)(k*10);
+			x1 = x1-10;
+			y1 = y1-(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+		if(k<0 && x1>x2) {
+			k = -k;
+			x1 = x1-10;
+			y1 =y1+(int)(k*10);
+			x2 = x2+10;
+			y2 = y2-(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+		if(k<0 && x1<x2) {
+			k = -k;
+			x2 = x2-10;
+			y2 =y2+(int)(k*10);
+			x1 = x1+10;
+			y1 = y1-(int)(k*10);
+			//System.out.println(" x1 = " + x1 + " x2 = " + x2 + " y1 = " + y1 + " y2 = " + y2);
+			}
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+		if(this.isSelected()) {
+			
+			g.setColor(c);
+		}
+		else{g.setColor(originalColor);}
+		g.drawLine(x1, y1, x2, y2);	
+		
+	}
+	
+	static void render(Graphics g) {
+		for(Shape s : lines) {
+			s.draw(g);
+		}
+		
+	}
+
+	@Override
+	public void changeColor(Color c) {
+		this.c = c;
+	}
+	@Override
+	public boolean isSelected() {
+		return selected;
+	}
+	@Override
+	public Color getOriginalColor() {
+		return originalColor;
+		
+	}
+	public void setSelected() {
+		selected = true;
+		 //System.out.println("is selected : " + selected);
+	}
+	public void setSelectedFalse() {
+		selected = false;
+		//System.out.println("is selected : " + selected);
+			
+	}
+	
+	public void changeOriginalColor(Color color) {
+		
+		originalColor = color;
+		
+		
+	}
+	
+//	public void add(Line line) {
+//		lines.add(line);
+//	}
+}

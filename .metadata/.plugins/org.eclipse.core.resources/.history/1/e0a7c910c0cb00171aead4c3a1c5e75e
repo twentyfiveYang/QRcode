@@ -1,0 +1,33 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class Notice extends JFrame {
+	
+	    JLabel j1,j2;
+	    public Notice() {
+	        j1 = new JLabel();
+	        j2 = new JLabel();
+	        j1.setHorizontalAlignment(SwingConstants.CENTER);
+	        j2.setHorizontalAlignment(SwingConstants.CENTER);
+	        j1.setText("1、使用左键点击图形按钮，拖动即可画图");
+	        j2.setText("2、使用左键点击图形按钮，拖动即可画图");
+	        this.setLayout(new GridLayout(4, 0));
+	        add(j1);
+	        add(j2);
+	        JPanel jp = new JPanel();
+	        add(jp,BorderLayout.SOUTH);
+	        setTitle("使用方法");
+	        setSize(500, 200);
+	        setLocationRelativeTo(null);
+	        setVisible(true);
+	 
+	    }
+	   
+	    }
+

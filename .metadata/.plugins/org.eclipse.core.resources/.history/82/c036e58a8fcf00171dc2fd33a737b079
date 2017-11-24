@@ -1,0 +1,48 @@
+package test1;
+
+import java.awt.Button;
+import java.awt.Frame;
+import java.util.HashSet;
+import java.util.Scanner;
+
+//public class vendingMachine {
+//	public int getValue(int i) {
+//        int result = 0;
+//        switch (i) { 
+//           case 1: 
+//               result = result + i; 
+//           case 2: 
+//               result = result + i  * 2; 
+//           case 3: 
+//               result = result + i  * 3; 
+//       } 
+//       return result; 
+//}
+//
+//
+//public static void main(String[] args) {
+	// TODO Auto-generated method stub
+//	 vendingMachine v1 = new vendingMachine();
+//	 vendingMachine v2 = new vendingMachine(12.0);
+//	char a ='B'+'8'-'3';
+//	System.out.println(a);
+//	
+//	
+//	
+//}
+//
+//}
+
+public class FlowAp extends Frame{
+    public static void main(String argv[]){
+        FlowAp fa=new FlowAp();
+        fa.setSize(400,300);
+        fa.setVisible(true);
+    }
+    FlowAp(){
+        add(new Button("One"));
+        add(new Button("Two"));
+        add(new Button("Three"));
+        add(new Button("Four"));
+    }//End of constructor
+}//End of Application
